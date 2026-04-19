@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './App.css';
@@ -18,12 +18,17 @@ import Collections from './sections/Collections';
 import Testimonials from './sections/Testimonials';
 import Visit from './sections/Visit';
 import Footer from './sections/Footer';
+import SportDetailPage from './pages/SportDetailPage';
 
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
   const mainRef = useRef<HTMLDivElement>(null);
   const triggersRef = useRef<ScrollTrigger[]>([]);
+  const [pathname, setPathname] = useState(window.location.pathname);
+
+  const isSportDetail = pathname.startsWith('/sports/');
+  const sportSlug = pathname.replace('/sports/', '').replace(/\/$/, '');
 
   // Initialize smooth scroll
   useLenis();
@@ -42,7 +47,23 @@ function App() {
   }, []);
 
   useEffect(() => {
+    const handleRouteChange = () => setPathname(window.location.pathname);
+    window.addEventListener('popstate', handleRouteChange);
+    window.addEventListener('hashchange', handleRouteChange);
+
+    return () => {
+      window.removeEventListener('popstate', handleRouteChange);
+      window.removeEventListener('hashchange', handleRouteChange);
+    };
+  }, []);
+
+  useEffect(() => {
     // Background color transitions based on sections
+    if (isSportDetail) {
+      gsap.set('body', { backgroundColor: '#050505' });
+      return;
+    }
+
     const sections = [
       { selector: '#hero-section', color: '#8c8c91' },
       { selector: '#about', color: '#050505' },
@@ -83,7 +104,11 @@ function App() {
       triggersRef.current.forEach((t) => t.kill());
       triggersRef.current = [];
     };
-  }, []);
+  }, [isSportDetail]);
+
+  if (isSportDetail) {
+    return <SportDetailPage slug={sportSlug} />;
+  }
 
   return (
     <div ref={mainRef} className="relative">

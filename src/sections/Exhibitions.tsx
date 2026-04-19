@@ -39,7 +39,8 @@ const Exhibitions = () => {
     // Card staggered reveal — translate from below + opacity 0.4 -> 1
     const cards = grid.querySelectorAll<HTMLElement>('.exhibit-card');
     cards.forEach((card, i) => {
-      const yOffset = [0, 100, 200, 300][i] || 0;
+      const row = Math.floor(i / 2);
+      const yOffset = row * 70 + (i % 2 === 0 ? 40 : 120);
       gsap.set(card, { opacity: 0.4, y: yOffset });
 
       const trigger = ScrollTrigger.create({
@@ -94,8 +95,9 @@ const Exhibitions = () => {
       {/* 2x2 Exhibition Grid */}
       <div ref={gridRef} className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
         {exhibitionsConfig.exhibitions.map((exhibit) => (
-          <div
+          <a
             key={exhibit.id}
+            href={`/sports/${exhibit.slug}`}
             className="exhibit-card group relative overflow-hidden will-change-transform"
             data-cursor="hover"
           >
@@ -120,7 +122,7 @@ const Exhibitions = () => {
 
             {/* Hover border */}
             <div className="absolute inset-0 border border-white/0 group-hover:border-white/20 transition-colors duration-500 pointer-events-none" />
-          </div>
+          </a>
         ))}
       </div>
 
