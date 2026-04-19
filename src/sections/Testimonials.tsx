@@ -63,7 +63,7 @@ const Testimonials = () => {
         {/* Author */}
         <div className="reveal-item flex flex-col md:flex-row items-center justify-center gap-6">
           {testimonialsConfig.authorImage && (
-            <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-white/20">
+            <div className="w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-3 border-white/30">
               <img
                 src={testimonialsConfig.authorImage}
                 alt={testimonialsConfig.authorName}

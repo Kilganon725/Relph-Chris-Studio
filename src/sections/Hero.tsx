@@ -5,6 +5,13 @@ import { heroConfig } from '../config';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const socialIconMap: Record<string, string> = {
+  Instagram: '/icons/instagram.svg',
+  Threads: '/icons/threads.svg',
+  X: '/icons/x.svg',
+  YouTube: '/icons/youtube.svg',
+};
+
 const Hero = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const statueRef = useRef<HTMLDivElement>(null);
@@ -104,7 +111,22 @@ const Hero = () => {
           </p>
           <div className="flex items-center gap-4 mt-6">
             {heroConfig.socialLinks.map((link, i) => (
-              <a key={i} href={link.href} className="museo-label text-white/40 hover:text-white transition-colors text-[10px]" data-cursor="hover">{link.label}</a>
+              <a
+                key={i}
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+                className="w-8 h-8 border border-white/20 flex items-center justify-center text-white/40 hover:text-white hover:border-white/50 transition-colors"
+                data-cursor="hover"
+                aria-label={link.label}
+                title={link.label}
+              >
+                <img
+                  src={socialIconMap[link.label]}
+                  alt={link.label}
+                  className="w-3.5 h-3.5 opacity-70 hover:opacity-100"
+                />
+              </a>
             ))}
           </div>
         </div>

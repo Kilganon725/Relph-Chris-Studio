@@ -8,3 +8,5 @@ dist/
 coverage/
 .idea/
 .vscode/
+public/videos/*.mov
+public/videos/*.MOV

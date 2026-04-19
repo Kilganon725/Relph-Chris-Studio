@@ -1,13 +1,11 @@
-import { ArrowUpRight, Instagram, Twitter, Facebook, Linkedin, Youtube, Globe } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { footerConfig } from '../config';
 
-const socialIconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  Instagram,
-  Twitter,
-  Facebook,
-  Linkedin,
-  Youtube,
-  Globe,
+const socialIconMap: Record<string, string> = {
+  Instagram: '/icons/instagram.svg',
+  Threads: '/icons/threads.svg',
+  X: '/icons/x.svg',
+  YouTube: '/icons/youtube.svg',
 };
 
 const Footer = () => {
@@ -48,15 +46,23 @@ const Footer = () => {
               </p>
               <div className="flex items-center gap-4">
                 {footerConfig.socialLinks.map((link, i) => {
-                  const IconComponent = socialIconMap[link.label] || Globe;
+                  const iconSrc = socialIconMap[link.label];
                   return (
                     <a
                       key={i}
                       href={link.href}
+                      target="_blank"
+                      rel="noreferrer"
                       data-cursor="hover"
                       className="w-10 h-10 border border-white/20 flex items-center justify-center text-white/60 hover:text-white hover:border-white/40 transition-colors"
+                      aria-label={link.label}
+                      title={link.label}
                     >
-                      <IconComponent className="w-4 h-4" />
+                      {iconSrc ? (
+                        <img src={iconSrc} alt={link.label} className="w-4 h-4 opacity-80" />
+                      ) : (
+                        <span className="museo-label text-[9px]">{link.label}</span>
+                      )}
                     </a>
                   );
                 })}

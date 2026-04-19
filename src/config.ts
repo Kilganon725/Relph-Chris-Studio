@@ -79,6 +79,13 @@ export interface SportDetail {
   period: string;
   description: string;
   gallery: SportDetailImage[];
+  videos?: SportDetailVideo[];
+}
+
+export interface SportDetailVideo {
+  src: string;
+  title: string;
+  caption: string;
 }
 
 export interface Collection {
@@ -144,9 +151,9 @@ export const heroConfig: HeroConfig = {
   brandLeft: "钟文鹏",
   brandRight: "Relph Chris",
   tagline: "极限运动爱好者 / 多领域运动员",
-  badge: "中国 · 深圳",
-  since: "Since 2010",
-  email: "relph.chris@example.com",
+  badge: "中国 · 浙江",
+  since: "Born in 2004",
+  email: "chrisrelph725@gmail.com",
   heroImage: "/images_new/hero_main.JPG",
   heroImageAlt: "钟文鹏 - 极限运动爱好者",
   scrollText: "向下滚动探索",
@@ -158,9 +165,10 @@ export const heroConfig: HeroConfig = {
     { label: "联系", href: "#visit" },
   ],
   socialLinks: [
-    { label: "Instagram", href: "https://instagram.com" },
-    { label: "Twitter", href: "https://twitter.com" },
-    { label: "LinkedIn", href: "https://linkedin.com" },
+    { label: "Instagram", href: "https://www.instagram.com/kd.relph?igsh=bmh3N2NiaGVjeGd0&utm_source=qr" },
+    { label: "Threads", href: "https://www.threads.com/@kilganonscott?igshid=NTc4MTIwNjQ2YQ==" },
+    { label: "X", href: "https://x.com/relph35432?s=21" },
+    { label: "YouTube", href: "https://youtube.com/@chrisrelphpp?si=VdZ2PNGtX68iaTHy" },
   ],
 };
 
@@ -231,6 +239,20 @@ export const exhibitionsConfig: ExhibitionsConfig = {
       title: "旅游",
       image: "/images_new/life_2.JPG",
       date: "持续探索",
+    },
+    {
+      id: 7,
+      slug: "shooting",
+      title: "射击",
+      image: "/images_new/gun_1.JPG",
+      date: "2022 - 至今",
+    },
+    {
+      id: 8,
+      slug: "surfing",
+      title: "冲浪",
+      image: "/images/surfing.jpg",
+      date: "2019 - 至今",
     },
   ],
 };
@@ -307,11 +329,38 @@ export const sportDetailsConfig: SportDetail[] = [
     title: "旅游",
     period: "持续探索",
     description:
-      "旅行让我从运动场景之外重新感受世界。不同城市与自然环境带来的新鲜体验，也不断激发我对生活与挑战的热情。",
+      "Belgrade 城市旅行记录。这个页面专门展示塞尔维亚 Belgrade 的行程与影像，后续我会按国家和城市继续扩展独立旅行内容。",
     gallery: [
-      { src: "/images_new/Life_1.JPG", alt: "旅行生活 1", caption: "旅途日常记录" },
-      { src: "/images_new/life_2.JPG", alt: "旅行生活 2", caption: "城市与风景探索" },
-      { src: "/images_new/life_3.JPG", alt: "旅行生活 3", caption: "生活方式片段" },
+      { src: "/images_new/IMG_9475.jpg", alt: "Belgrade 旅行 1", caption: "Belgrade 城市街景" },
+      { src: "/images_new/IMG_9702.JPG", alt: "Belgrade 旅行 2", caption: "Belgrade 建筑与光影" },
+      { src: "/images_new/IMG_9720.jpg", alt: "Belgrade 旅行 3", caption: "Belgrade 日常片段" },
+      { src: "/images_new/IMG_9723.JPG", alt: "Belgrade 旅行 4", caption: "Belgrade 旅途记录" },
+      { src: "/images_new/IMG_9944.JPG", alt: "Belgrade 旅行 5", caption: "Belgrade 夜景氛围" },
+      { src: "/images_new/IMG_9947.jpg", alt: "Belgrade 旅行 6", caption: "Belgrade 旅行收尾" },
+    ],
+  },
+  {
+    slug: "shooting",
+    title: "射击",
+    period: "2022 - 至今",
+    description:
+      "射击训练让我更专注于呼吸节奏、稳定性和瞬时判断。每一次训练都在提升控制力与心理素质。",
+    gallery: [
+      { src: "/images_new/gun_1.JPG", alt: "射击训练 1", caption: "射击训练日常" },
+      { src: "/images_new/gun_2.JPG", alt: "射击训练 2", caption: "姿态与瞄准控制" },
+      { src: "/images_new/gun_3.jpg", alt: "射击训练 3", caption: "阶段性训练记录" },
+    ],
+  },
+  {
+    slug: "surfing",
+    title: "冲浪",
+    period: "2019 - 至今",
+    description:
+      "冲浪让我在变化的海浪中保持平衡与判断。每一次下水都是和自然节奏对话，也是对心态与技巧的双重训练。",
+    gallery: [
+      { src: "/images/surfing.jpg", alt: "冲浪训练 1", caption: "海上冲浪训练" },
+      { src: "/images/training-1.jpg", alt: "冲浪体能 2", caption: "冲浪相关体能准备" },
+      { src: "/images/training-4.jpg", alt: "冲浪体能 3", caption: "核心与平衡能力提升" },
     ],
   },
 ];
@@ -356,7 +405,7 @@ export const testimonialsConfig: TestimonialsConfig = {
   quote: "运动让我找到了真正的自己。每一次挑战极限，都让我更加坚信：人的潜力是无限的。无论是在雪山上飞驰，还是在赛道上狂飙，亦或是在拳击台上挥洒汗水，这些经历都塑造了我坚韧的性格和永不言弃的精神。",
   authorName: "钟文鹏",
   authorTitle: "Relph Chris / 极限运动爱好者",
-  authorImage: "/images_new/Life_1.JPG",
+  authorImage: "/images_new/logo_new.jpg",
 };
 
 export const visitConfig: VisitConfig = {
@@ -368,7 +417,7 @@ export const visitConfig: VisitConfig = {
     {
       icon: "MapPin",
       title: "所在城市",
-      content: "中国 · 深圳",
+      content: "中国 · 浙江",
     },
     {
       icon: "Clock",
@@ -383,7 +432,7 @@ export const visitConfig: VisitConfig = {
     {
       icon: "Ticket",
       title: "联系方式",
-      content: "relph.chris@example.com<br />+86 138 0000 0000",
+      content: "chrisrelph725@gmail.com<br />+86 135 6658 8614",
     },
   ],
 };
@@ -393,10 +442,10 @@ export const footerConfig: FooterConfig = {
   brandName: "钟文鹏 | Relph Chris",
   brandDescription: "极限运动爱好者，用热爱定义人生。",
   socialLinks: [
-    { label: "Instagram", href: "https://instagram.com" },
-    { label: "Twitter", href: "https://twitter.com" },
-    { label: "LinkedIn", href: "https://linkedin.com" },
-    { label: "Youtube", href: "https://youtube.com" },
+    { label: "Instagram", href: "https://www.instagram.com/kd.relph?igsh=bmh3N2NiaGVjeGd0&utm_source=qr" },
+    { label: "Threads", href: "https://www.threads.com/@kilganonscott?igshid=NTc4MTIwNjQ2YQ==" },
+    { label: "X", href: "https://x.com/relph35432?s=21" },
+    { label: "YouTube", href: "https://youtube.com/@chrisrelphpp?si=VdZ2PNGtX68iaTHy" },
   ],
   quickLinks: [
     { label: "关于我", href: "#about" },
@@ -407,9 +456,9 @@ export const footerConfig: FooterConfig = {
   quickLinksTitle: "快速链接",
   contactTitle: "联系方式",
   contactItems: [
-    "中国 · 深圳",
-    "relph.chris@example.com",
-    "+86 138 0000 0000",
+    "中国 · 浙江",
+    "chrisrelph725@gmail.com",
+    "+86 135 6658 8614",
   ],
   bottomLinks: [
     { label: "隐私政策", href: "#" },
