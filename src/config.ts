@@ -209,14 +209,14 @@ export const exhibitionsConfig: ExhibitionsConfig = {
       id: 2,
       slug: "racing",
       title: "赛车",
-      image: "/images/racing.jpg",
+      image: "/images_new/racing_1.JPG",
       date: "2015 - 至今",
     },
     {
       id: 3,
       slug: "basketball",
       title: "篮球",
-      image: "/images/basketball.jpg",
+      image: "/images_new/basketball.JPG",
       date: "2008 - 至今",
     },
     {
@@ -338,6 +338,13 @@ export const sportDetailsConfig: SportDetail[] = [
       { src: "/images_new/IMG_9944.JPG", alt: "Belgrade 旅行 5", caption: "Belgrade 夜景氛围" },
       { src: "/images_new/IMG_9947.jpg", alt: "Belgrade 旅行 6", caption: "Belgrade 旅行收尾" },
     ],
+    videos: [
+      {
+        src: "/videos/IMG_9910.mov",
+        title: "Belgrade 旅行视频",
+        caption: "Belgrade 现场记录（可开启声音）",
+      },
+    ],
   },
   {
     slug: "shooting",
@@ -349,6 +356,13 @@ export const sportDetailsConfig: SportDetail[] = [
       { src: "/images_new/gun_1.JPG", alt: "射击训练 1", caption: "射击训练日常" },
       { src: "/images_new/gun_2.JPG", alt: "射击训练 2", caption: "姿态与瞄准控制" },
       { src: "/images_new/gun_3.jpg", alt: "射击训练 3", caption: "阶段性训练记录" },
+    ],
+    videos: [
+      {
+        src: "/videos/gun.MOV",
+        title: "射击训练视频",
+        caption: "实拍训练片段（可开启声音）",
+      },
     ],
   },
   {
