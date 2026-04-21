@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { heroConfig } from '../config';
+import { exhibitionsConfig, heroConfig } from '../config';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -90,9 +90,34 @@ const Hero = () => {
       >
         <div className="museo-label text-white/70">{heroConfig.brandLeft} {heroConfig.brandRight}</div>
         <div className="flex items-center gap-8">
-          {heroConfig.navLinks.map((link, i) => (
-            <a key={i} href={link.href} className="museo-label text-white/70 hover:text-white transition-colors">{link.label}</a>
-          ))}
+          {heroConfig.navLinks
+            .filter((link) => link.label !== '运动')
+            .map((link, i) => (
+              <a key={i} href={link.href} className="museo-label text-white/70 hover:text-white transition-colors" data-cursor="hover">
+                {link.label}
+              </a>
+            ))}
+          <div className="relative group">
+            <button
+              type="button"
+              className="museo-label text-white/70 hover:text-white transition-colors"
+              data-cursor="hover"
+            >
+              运动
+            </button>
+            <div className="absolute right-0 top-full mt-3 min-w-[220px] border border-white/20 bg-black/80 backdrop-blur-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 py-2">
+              {exhibitionsConfig.exhibitions.map((item) => (
+                <a
+                  key={item.slug}
+                  href={`/sports/${item.slug}`}
+                  className="block px-4 py-2 museo-label text-white/70 hover:text-white hover:bg-white/10 transition-colors"
+                  data-cursor="hover"
+                >
+                  {item.title}
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
       </nav>
 
